@@ -1,0 +1,70 @@
+<body>
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">How To Play!</h5>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+        <div class="modal-body">
+          <p>Guess a word! Then, we’ll tell you how many characters of your guess were in the correct position, how many characters were in the target word, and whether your guess was longer, shorter, or the same length as the target word. You may
+            continue guessing until you guess the correct word.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col p-3 bg-light border rounded-3 m-2">
+        <form #guessForm="ngForm">
+          <div class="">
+            <h5>Current Guesses: {{ this.guessCount }}</h5>
+            <div class="h-10 p-5 mb-3 text-center">
+              <h3 *ngIf="!canType && this.message != 'Congrats you guessed it!'">Press "New Game" to Play!</h3>
+              <h3 *ngIf="!canType && this.message == 'Congrats you guessed it!'">Nice Work! Press "New Game" to Play Again!</h3>
+              <input *ngIf="canType" type="text" class="form-control" id="answer" name="answer" placeholder="Type your guess here" [(ngModel)]='guess.word'>
+              <button *ngIf="canType" class="btn btn-primary m-2"
+              [disabled]="!guess.word"
+              (click)="submitGuess()"
+              >Submit</button>
+            </div>
+            <div class="text-center p-3">
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal">
+                How to Play
+              </button>
+              <button class="btn btn-danger"
+              (click)="newGame()"
+              >New Game</button>
+            </div>
+            <div class="p-3" [ngClass]="{'alert alert-danger': this.message == 'Wrong!', 'alert alert-success': this.message == 'Congrats you guessed it!'}">
+              {{ this.message }}
+            </div>
+          </div>
+        </form>
+        <div class="" id="guesses">
+        </div>
+      </div>
+    </div>
+    <div [ngStyle]="(this.guessCount != 0) ? {'visibility': 'visible'} : {'visibility': 'hidden'}">
+      <h5>Past Guesses and Clues: </h5>
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>Guess</th>
+                  <th>Length</th>
+                  <th>Correct Letters</th>
+                  <th>Correct Spot Letters</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let part of guesses">
+                  <td>{{ part.word }}</td>
+                  <td>{{ part.length }}</td>
+                  <td>{{ part.charcount }}</td>
+                  <td>{{ part.locations }}</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>

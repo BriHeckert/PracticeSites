@@ -1,0 +1,33 @@
+@bluecolor: #9CC7D1;
+@darkblue: #3C555B;
+
+.btn{
+  background-color: @darkblue;
+  border: solid 1px @darkblue;
+}
+
+.bluetheme{
+  background-color: @bluecolor;
+  border: solid 1px @darkblue;
+}
+
+.card{
+  .card-title{
+    font-weight: bold;
+  }
+  .bluetheme();
+  p {
+    font-size: 0.9em;
+  }
+}
+
+.accordion{
+  .bluetheme();
+  .accordion-button{
+    background-color: #D7EFF5;
+    font-weight: bold;
+  }
+  .accordion-body{
+    background-color: #F5F6F6;
+  }
+}

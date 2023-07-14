@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+Sources:
+  https://careerkarma.com/blog/html-copyright-symbol/#:~:text=You%20can%20create%20an%20HTML,character%20onto%20the%20web%20page.&text=When%20creating%20a%20web%20page,ownership%20of%20what%20you%20create.
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+-->
+ <link rel="stylesheet" href="styles/main.css">
+ <html lang="en">
+     <head>
+         <meta charset="utf-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+         <meta name="author" content="Brianna Heckert">
+         <meta name="description" content="main page of personal website">
+         <meta name="keywords" content="Brianna Heckert, Brianna Heckert UVA">
+         <title>Contact Me</title>
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+         <link rel="stylesheet/less" type="text/css" href="styles.less" />
+     </head>
+     <body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-light row col-12" style="background-color: #9CC7D1;">
+         <div class="container-fluid">
+           <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarNavDropdown">
+             <ul class="navbar-nav">
+               <li class="nav-item">
+                 <a class="nav-link" href="index.html">Home</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link active" aria-current="page" href="contact.html">Contact</a>
+               </li>
+               <li class="nav-item dropdown">
+                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Professional</a>
+                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                   <li><a class="dropdown-item" href="resume.html">Resume</a></li>
+                   <li><a class="dropdown-item" href="projects.html">Projects</a></li>
+                 </ul>
+               </li>
+               <li class="nav-item dropdown">
+                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Personal</a>
+                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                   <li><a class="dropdown-item" href="aboutme.html">About Me</a></li>
+                   <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                 </ul>
+               </li>
+             </ul>
+           </div>
+         </div>
+       </nav>
+       <!-- currently doesnt actually submit anything, will implement PHP later-->
+       <form class = "container">
+         <div class="mb-3">
+           <label for="exampleInputEmail1" class="form-label">Name</label>
+           <input type="name" class="form-control">
+         </div>
+         <div class="mb-3">
+           <label for="exampleInputPassword1" class="form-label">Email</label>
+           <input type="password" class="form-control" id="exampleInputPassword1">
+           <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+         </div>
+         <div class="mb-3">
+           <textarea class="form-control" name="text" rows="5" placeholder="Message" ></textarea>
+         </div>
+         <button type="submit" class="btn btn-primary">Submit</button>
+       </form>
+       <footer class="primary-footer mt-auto">
+         <nav class="navbar navbar-light bg-light">
+           <div class="container-fluid">
+             <small class="copyright">© 2022 Brianna Heckert</small>
+           </div>
+         </nav>
+       </footer>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/less@4" ></script>
+    </body>
+  </html>

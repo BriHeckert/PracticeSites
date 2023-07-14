@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--
+Sources:
+  https://careerkarma.com/blog/html-copyright-symbol/#:~:text=You%20can%20create%20an%20HTML,character%20onto%20the%20web%20page.&text=When%20creating%20a%20web%20page,ownership%20of%20what%20you%20create.
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+  https://www.w3schools.com/css/css_navbar_horizontal.asp
+  https://www.w3schools.com/css/css_align.asp
+  https://radu.link/make-footer-stay-bottom-page-bootstrap/
+  https://stackoverflow.com/questions/29734492/adding-text-over-an-image-in-bootstrap-carousel
+  https://lesscss.org/#overview
+  https://stackoverflow.com/questions/45029359/how-to-align-center-an-accordion-in-a-div
+-->
+<!--
+Bootstrap Elements:
+Navbar w/ dropdown elements
+Carousel
+Cards w/ buttons
+Accordon (on resume page)
+Buttons
+Form (on contact page)
+-->
+ <html lang="en">
+ <head>
+         <meta charset="utf-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <meta name="author" content="Brianna Heckert">
+         <meta name="description" content="main page of personal website">
+         <meta name="keywords" content="Brianna Heckert, Brianna Heckert UVA">
+         <title>Brianna Heckert</title>
+         <link rel="stylesheet" href="styles/main.css">
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+         <link rel="stylesheet/less" type="text/css" href="styles.less" />
+     </head>
+     <body class="d-flex flex-column min-vh-100">
+         <nav class="navbar navbar-expand-lg navbar-light row col-12" style="background-color:#9CC7D1;">
+           <div class="container-fluid">
+             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+               <ul class="navbar-nav">
+                 <li class="nav-item">
+                   <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link" href="contact.html">Contact</a>
+                 </li>
+                 <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Professional</a>
+                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                     <li><a class="dropdown-item" href="resume.html">Resume</a></li>
+                     <li><a class="dropdown-item" href="projects.html">Projects</a></li>
+                   </ul>
+                 </li>
+                 <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Personal</a>
+                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                     <li><a class="dropdown-item" href="aboutme.html">About Me</a></li>
+                     <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                   </ul>
+                 </li>
+               </ul>
+             </div>
+           </div>
+         </nav>
+         <div class="carousel slide" data-bs-ride="carousel">
+           <div class="carousel-inner">
+             <div class="carousel-item active align-items-start">
+               <img src="parkcity.png" alt="view some a peak in parkcity utah" class="d-block w-100">
+               <div class="carousel-content align-items-start">
+                 <h1 style="font-weight: bold;">BRIANNA HECKERT</h1>
+                 <h4>University of Virginia '23'</h4>
+                 <h5>~ student, software engineer, outdoor enthusiast, thru-hiker ~</h5>
+               </div>
+             </div>
+             <div class="carousel-item align-items-start">
+               <img src="maine.png" alt="golden hour in the mountains of maine" class="d-block w-100">
+               <div class="carousel-content align-items-start">
+                 <h1 style="font-weight: bold;">BRIANNA HECKERT</h1>
+                 <h4>University of Virginia '23'</h4>
+                 <h5>~ student, software engineer, outdoor enthusiast, thru-hiker ~</h5>
+               </div>
+             </div>
+             <div class="carousel-item align-items-start">
+               <img src="coalmtn.png" alt="sunset on coal mtn VA" class="d-block w-100">
+               <div class="carousel-content">
+                 <h1 style="font-weight: bold;">BRIANNA HECKERT</h1>
+                 <h4>University of Virginia '23'</h4>
+                 <h5>~ student, software engineer, outdoor enthusiast, thru-hiker ~</h5>
+               </div>
+             </div>
+           </div>
+         </div>
+      <section class = "row container justify-content-start" style="border-bottom: 5px solid black;">
+            <img class="col image" style="max-width:20%;" src="bri.jpg" alt="Brianna smiling">
+        <h5 class="col row align-items-center">Brianna Heckert is currently pursuing a Bachelor's of Science in Computer Science from the University of Virgina. Brianna also successfully thru-hiked all 2,193 miles of the Appalachian Trail from Georgia to Maine in 128 days.</h5>
+      </section>
+      <section class = "container row justify-content-evenly">
+        <div class="card col-4" style="width: 18rem;">
+          <img src="cap.png" alt="UVA graduation cap">
+          <div class="card-body">
+            <h3 class="card-title">Resume</h3>
+            <p>More information on coursework and professional activites</p>
+            <a href="resume.html" class="btn btn-primary">See More</a>
+          </div>
+        </div>
+        <div class="card col-4" style="width: 18rem;">
+          <img src="code.png" alt="html code">
+          <div class="card-body">
+            <h3 class="card-title">Projects</h3>
+            <p>A collection of personal programming projects completed</p>
+            <a href="projects.html" class="btn btn-primary">See More</a>
+          </div>
+        </div>
+        <div class="card col-4" style="width: 18rem;">
+          <img src="mountain.jpg" alt="sunset on mountain">
+          <div class="card-body">
+            <h3 class="card-title">Blog</h3>
+            <p>A cluster of Brianna's thoughts on Computer Science, the Appalachian
+               Trail, and other random things</p>
+            <a href="blog.html" class="btn btn-primary">See More</a>
+          </div>
+        </div>
+        </section>
+      <footer class="primary-footer mt-auto">
+        <nav class="navbar navbar-light bg-light">
+          <div class="container-fluid">
+            <small class="copyright">© 2022 Brianna Heckert</small>
+          </div>
+        </nav>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/less@4" ></script>
+     </body>
+ </html>

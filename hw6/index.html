@@ -1,0 +1,255 @@
+<!-- https://cs4640.cs.virginia.edu/bnh5fh/hw6/ -->
+<!-- Brianna Heckert (bnh5fh)
+Sources:
+CS 4640 Trivia Example -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Brianna Heckert">
+  <meta name="description" content="HW6-Evil Wordle">
+  <title>Evil Wordle</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <script type="text/javascript" src="wordlewords.js"></script>
+</head>
+
+<body onunload="save()" onload="rebuild()">
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">How To Play!</h5>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+        <div class="modal-body">
+          <p>Guess a word! Then, we’ll tell you how many characters of your guess were in the correct position, how many characters were in the target word, and whether your guess was longer, shorter, or the same length as the target word. You may
+            continue guessing until you guess the correct word.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row p-2">
+      <div class="text-end">
+        <input type="button" class="btn btn-dark" value="Clear History" onclick="clearHistory();">
+      </div>
+      <div class="text-start">
+        <h1>Wannabe Wordle</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-9 p-3 bg-light border rounded-3 m-2">
+        <form>
+          <div class="">
+            <h5>Current Guesses: <span id="num">0</span></h5>
+            <div class="h-10 p-5 mb-3 text-center">
+              <input type="text" class="form-control" id="answer" name="answer" placeholder="Type your guess here" disabled>
+              <input type="button" class="btn btn-primary m-2" value="Submit" onclick="addGuess();" </input>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal">
+                How to Play
+              </button>
+              <input type="button" class="btn btn-danger" value="New Game" onclick="getRandomWord(setUpNewGame);" </input>
+            </div>
+            <div class = 'p-3' id="message"></div>
+          </div>
+        </form>
+        <div class="" id="guesses">
+        </div>
+      </div>
+      <div class="col p-3 m-2 bg-light border rounded-3">
+        <h4 class="text-center border-bottom border-dark">Player Stats</h4>
+        <div class="align-self-center">
+          <h6>Games Played: <span id="played">0</span></h6>
+          <h6>Games Won: <span id="won">0</span></h6>
+          <h6>Win Streak: <span id="streak">0</span></h6>
+          <h6>Average # of Guesses / Game: <span id="avg">0</span></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    var numguesses = 0;
+    var streak = 0;
+    var gamesPlayed = 0;
+    var average = 0;
+    var gamesWon = 0;
+    var totalGuesses = 0;
+    var guesses = [];
+    var answer = null;
+    var guess = null;
+    var message = null;
+    var enable = null;
+
+    function setUpNewGame(newWord){
+      guesses = [];
+      gamesPlayed += 1;
+      message = "";
+      enable = true;
+      if (guess != answer){
+        streak = 0;
+        totalGuesses -= numguesses;
+      }
+      numguesses = 0;
+      document.getElementById("message").innerHTML = message;
+      document.getElementById("answer").disabled = false;
+      document.getElementById("answer").value = "";
+      document.getElementById("played").textContent = gamesPlayed;
+      document.getElementById("streak").textContent = streak;
+      document.getElementById("won").textContent = gamesWon;
+
+      average = totalGuesses / gamesPlayed;
+      document.getElementById("avg").textContent = average;
+      document.getElementById("guesses").innerHTML = guesses;
+      document.getElementById("num").innerHTML = numguesses;
+      answer = newWord.toUpperCase();
+    }
+
+    function addGuess(itemValue = null) {
+      guess = document.getElementById("answer").value.toUpperCase();
+      document.getElementById("answer").value = "";
+
+      if (/^[a-zA-Z]+$/.test(guess)){
+        numguesses += 1;
+        totalGuesses += 1;
+        average = totalGuesses / gamesPlayed;
+        document.getElementById("num").innerHTML = numguesses;
+        document.getElementById("avg").textContent = average;
+        if (answer == guess) {
+          // got it right
+          streak += 1;
+          gamesWon += 1;
+          document.getElementById("answer").disabled = true;
+          document.getElementById("streak").textContent = streak;
+          document.getElementById("won").textContent = gamesWon;
+          document.getElementById("avg").textContent = average;
+          message = "<div class='alert alert-success'>Correct!</div>";
+          document.getElementById("message").innerHTML = message;
+        } else {
+          // compare lengths
+          var length = ""
+          if (guess.length === answer.length) {
+            length = guess + " is the same length as the wordle.";
+          } else if (guess.length < answer.length) {
+            length = guess + " is too short!";
+          } else {
+            length = guess + " is too long!";
+          }
+
+          // compare locations and characters
+          var locationcount = 0;
+          var charcount = 0;
+          for (let i = 0; i < guess.length && i < answer.length; i++) {
+            if (answer[i] === guess[i]) {
+              locationcount += 1;
+            }
+            if (answer.includes(guess[i]) !== false) {
+              charcount += 1;
+            }
+          }
+
+          message = "<div class='alert alert-danger'>Nope! But... \n" + length + " " + guess + " has " +charcount+ " correct letters and " +locationcount+" letters in the right spot.</div>";
+          document.getElementById("message").innerHTML = message;
+
+          var newguess = length + " " + guess + " has " + charcount + " correct letters and " +locationcount + " letters in the right spot.";
+
+          var guesslist = "";
+
+          for (var i = 0; i < guesses.length; i++){
+            guesslist = guesslist + "<br>" + guesses[i]
+          }
+
+          document.getElementById("guesses").innerHTML = guesslist;
+          guesses.push(newguess);
+        }
+      } else {
+        message = "<div class='alert alert-danger'>Error, invalid characters detected! The wordle only contains letters!</div>";
+        document.getElementById("message").innerHTML = message;
+      }
+    }
+
+    function save() {
+      localStorage.setItem("guessList", JSON.stringify(guesses));
+      localStorage.setItem("streaks", JSON.stringify(streak));
+      localStorage.setItem("questionanswer", JSON.stringify(answer));
+      localStorage.setItem("wins", JSON.stringify(gamesWon));
+      localStorage.setItem("playedgames", JSON.stringify(gamesPlayed));
+      localStorage.setItem("average", JSON.stringify(average));
+      localStorage.setItem("numberguesses", JSON.stringify(numguesses));
+      localStorage.setItem("total", JSON.stringify(totalGuesses));
+      localStorage.setItem('message', JSON.stringify(message));
+      localStorage.setItem('textenabled', JSON.stringify(enable));
+    }
+
+    function rebuild() {
+          var tmp = JSON.parse(localStorage.getItem("guessList"));
+          var streaktmp = JSON.parse(localStorage.getItem("streaks"));
+          answer = JSON.parse(localStorage.getItem("questionanswer"));
+          var gamesWonstemp = JSON.parse(localStorage.getItem("wins"));
+          var gamesPlayedtmp = JSON.parse(localStorage.getItem("playedgames"))
+          var averagetmp = JSON.parse(localStorage.getItem("average"));
+          var numguessestmp = JSON.parse(localStorage.getItem("numberguesses"));
+          totalGuesses = JSON.parse(localStorage.getItem("total"));
+          var messagetmp = JSON.parse(localStorage.getItem("message"));
+          enable = JSON.parse(localStorage.getItem("textenabled"));
+
+          var guesslist = "";
+
+          if (tmp != null) {
+              for (var i = 0; i < tmp.length; i++) {
+                  // add to page
+                  guesses.push(tmp[i]);
+                  guesslist = guesslist + "<br>" + tmp[i]
+              }
+              guesses = tmp;
+              document.getElementById("guesses").innerHTML = guesslist;
+              document.getElementById("streak").textContent = streaktmp;
+              document.getElementById("played").textContent = gamesPlayedtmp;
+              document.getElementById("won").textContent = gamesWonstemp;
+              document.getElementById("avg").textContent = averagetmp;
+              document.getElementById("num").textContent = numguessestmp;
+              document.getElementById("message").innerHTML = messagetmp;
+              streak = streaktmp;
+              gamesWon = gamesWonstemp;
+              gamesPlayed = gamesPlayedtmp;
+              gamesWon = gamesWonstemp;
+              average = averagetmp;
+              numguesses = numguessestmp;
+              message = messagetmp;
+              if (enable){
+                document.getElementById("answer").disabled = false;
+              }
+              if (message == "<div class='alert alert-success'>Correct!</div>"){
+                document.getElementById("answer").disabled = true;
+              }
+          }
+      }
+
+      function clearHistory(){
+        localStorage.clear();
+        numguesses = 0;
+        streak = 0;
+        gamesPlayed = 0;
+        average = 0;
+        gamesWon = 0;
+        totalGuesses = 0;
+        guesses = [];
+        answer = null;
+        getRandomWord(setUpNewGame);
+      }
+
+      if (enable){
+        document.getElementById("answer").disabled = false;
+      }
+
+  </script>
+</body>
+
+</html>

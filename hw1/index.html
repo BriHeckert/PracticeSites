@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+Sources:
+  https://careerkarma.com/blog/html-copyright-symbol/#:~:text=You%20can%20create%20an%20HTML,character%20onto%20the%20web%20page.&text=When%20creating%20a%20web%20page,ownership%20of%20what%20you%20create.
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+  https://www.w3schools.com/css/css_navbar_horizontal.asp
+  https://www.w3schools.com/css/css_align.asp
+-->
+ <html lang="en">
+ <head>
+   <link rel="stylesheet" href="styles/main.css">
+         <meta charset="utf-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <meta name="author" content="Brianna Heckert">
+         <meta name="description" content="main page of personal website">
+         <meta name="keywords" content="Brianna Heckert, Brianna Heckert UVA">
+         <title>Brianna Heckert</title>
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+     </head>
+     <body>
+       <header>
+         <nav class="navbar navbar-expand-lg navbar-light row col-12" style="background-color: #e3f2fd;">
+           <div class="container-fluid">
+             <a class="navbar-brand" href="index.html">Brianna Heckert</a>
+             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+               <ul class="navbar-nav">
+                 <li class="nav-item">
+                   <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link" href="contact.html">Contact</a>
+                 </li>
+                 <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Professional</a>
+                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                     <li><a class="dropdown-item" href="resume.html">Resume</a></li>
+                     <li><a class="dropdown-item" href="projects.html">Projects</a></li>
+                   </ul>
+                 </li>
+                 <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Personal</a>
+                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                     <li><a class="dropdown-item" href="aboutme.html">About Me</a></li>
+                     <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                   </ul>
+                 </li>
+               </ul>
+             </div>
+           </div>
+         </nav>
+         <div class="container row">
+         <h1>BRIANNA HECKERT</h1>
+         <h3>University of Virginia '23'</h3>
+         </div>
+      </header>
+      <section class = "container row">
+        <h2>~ student, software engineer, outdoor ethusiast, thru-hiker ~</h2>
+        <div class="piccontainer">
+          <div class="image col-12">
+            <img src="bri.jpg" alt="Brianna smiling">
+          </div>
+        <p class = "col-10">Brianna Heckert is currently pursuing a Bachelor's of Science in Computer Science from the University of Virgina. Brianna also successfully thru-hiked all 2,193 miles of the Appalachian Trail from Georgia to Maine in 128 days.</p>
+        </div>
+      </section>
+      <section class = "container">
+        <!--<section class = "row">-->
+          <img src="cap.png" alt="UVA graduation cap" class='col-4 imagerow'>
+          <img src="code.png" alt="html code" class='col-4 imagerow fadeshow'>
+          <img src="mountain.jpg" alt="Sunset from the top of a mountain" class='col-4 imagerow fadeshow'>
+          <div class = "col-4">
+          <a href="resume.html"><h4>Professional</h4></a>
+          <p>More information on coursework and professional activites</p>
+          </div>
+          <div class = "col-4">
+          <a href="projects.html"><h4>Projects</h4></a>
+          <p>A collection of personal programming projects completed</p>
+          </div>
+          <div class = "col-4">
+            <a href="blog.html"><h4>Personal</h4></a>
+            <p>A cluster of Brianna's thoughts on Computer Science, the Appalachian
+               Trail, and other random things</p>
+             </div>
+        </section>
+      <footer class="container primary-footer">
+        <nav class = "row col-12">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+         </ul>
+        </nav>
+        <small class="copyright">© 2022 Brianna Heckert</small>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+     </body>
+ </html>
